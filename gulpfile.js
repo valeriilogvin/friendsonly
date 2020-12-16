@@ -16,14 +16,14 @@ let gulp         = require("gulp"),
 
 // пути к файлам
 var path = {
-    production: {  // куда будет складывать готовые файлы после зборки
-        resources: 'production/resources/',
-        html: 'production/',
-        js: 'production/',
-        scss: 'production/',
-        jsLibs: "production/",
-        cssLibs: "production/",
-        fonts: "production/resources/fonts",
+    build: {  // куда будет складывать готовые файлы после зборки
+        resources: 'build/resources/',
+        html: 'build/',
+        js: 'build/',
+        scss: 'build/',
+        jsLibs: "build/",
+        cssLibs: "build/",
+        fonts: "build/resources/fonts",
     },
     src: {
         resScss: "src/resources/*.scss",
@@ -51,7 +51,7 @@ var path = {
 gulp.task('webserver', function() {
     browserSync.init({ // Выполняем browserSync
         server:{ // Определяем параметры сервера
-            baseDir:'./production' // Директория для сервера
+            baseDir:'./build' // Директория для сервера
         },
         notify: false // Отключаем уведомления
     })
@@ -60,79 +60,79 @@ gulp.task('webserver', function() {
 
 // сборка файлов
 // сборка html
-gulp.task("html:production", function() {
+gulp.task("html:build", function() {
     return gulp.src(path.src.html)
         .pipe(rigger())
-        .pipe(gulp.dest(path.production.html))
+        .pipe(gulp.dest(path.build.html))
         .pipe(reload({stream: true}));
 });
 
 // сборка js
-gulp.task("js:production", function() {
+gulp.task("js:build", function() {
     return gulp.src(path.src.js)
         .pipe(rigger())
-        .pipe(gulp.dest(path.production.js))
+        .pipe(gulp.dest(path.build.js))
         .pipe(reload({stream: true}));
 });
 
 // сборка resources js
-gulp.task("resJs:production", function() {
+gulp.task("resJs:build", function() {
     return gulp.src(path.src.resJs)
         .pipe(rigger())
-        .pipe(gulp.dest(path.production.resources))
+        .pipe(gulp.dest(path.build.resources))
         .pipe(reload({stream: true}));
 });
 
 // сборка fonts
-gulp.task("fonts:production", function() {
+gulp.task("fonts:build", function() {
     return gulp.src(path.src.fonts)
-        .pipe(gulp.dest(path.production.fonts))
+        .pipe(gulp.dest(path.build.fonts))
         .pipe(reload({stream: true}));
 });
 
 // сборка scss
-gulp.task("scss:production", function() {
+gulp.task("scss:build", function() {
     return gulp.src(path.src.scss)
         .pipe(sass())
         .pipe(preFixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
-        .pipe(gulp.dest(path.production.scss))
+        .pipe(gulp.dest(path.build.scss))
         .pipe(reload({stream: true}));
 });
 
 // сборка resources scss
-gulp.task("resScss:production", function() {
+gulp.task("resScss:build", function() {
     return gulp.src(path.src.resScss)
         .pipe(sass())
         .pipe(preFixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true }))
-        .pipe(gulp.dest(path.production.resources))
+        .pipe(gulp.dest(path.build.resources))
         .pipe(reload({stream: true}));
 });
 
 // сборка css-библиотек
-gulp.task("cssLibs:production", function() {
+gulp.task("cssLibs:build", function() {
     return gulp.src(path.src.cssLibs)
-        .pipe(gulp.dest(path.production.cssLibs)) // Выгружаем в папку production/css
+        .pipe(gulp.dest(path.build.cssLibs)) // Выгружаем в папку build/css
         .pipe(reload({stream: true})); // Обновляем css на странице при изменении
 });
 
 // сборка js-библиотек
-gulp.task("jsLibs:production", function() {
+gulp.task("jsLibs:build", function() {
     return gulp.src(path.src.jsLibs)
-        .pipe(gulp.dest(path.production.jsLibs)) // Выгружаем в папку production/js как есть
+        .pipe(gulp.dest(path.build.jsLibs)) // Выгружаем в папку build/js как есть
         .pipe(reload({stream: true})); // Обновляем js на странице при изменении
 });
 
 // таск для сборки
-gulp.task("production",
+gulp.task("build",
     gulp.parallel(
-        "resJs:production",
-        "resScss:production",
-        "html:production",
-        "scss:production",
-        "js:production",
-        "fonts:production",
-        "cssLibs:production",
-        "jsLibs:production"
+        "resJs:build",
+        "resScss:build",
+        "html:build",
+        "scss:build",
+        "js:build",
+        "fonts:build",
+        "cssLibs:build",
+        "jsLibs:build"
     )
 );
 
@@ -141,15 +141,15 @@ gulp.task("js.min", function() {
     return gulp.src(path.src.jsLibs)
         .pipe(concat('libs.min.js')) // Собираем их в кучу в новом файле libs.min.js
         .pipe(uglify()) // Сжимаем JS файл
-        .pipe(gulp.dest(path.production.jsLibs)) // Выгружаем в папку production/js
+        .pipe(gulp.dest(path.build.jsLibs)) // Выгружаем в папку build/js
 });
 
 gulp.task("css.min", function() {
     return gulp.src(path.src.cssLibs)
         .pipe(cssnano()) // Сжимаем
-        .pipe(gulp.dest(path.production.cssLibs)) // Выгружаем в папку production/css
+        .pipe(gulp.dest(path.build.cssLibs)) // Выгружаем в папку build/css
         .pipe(concat('libs.min.css')) // Собираем их в кучу в новом файле libs.min.css
-        .pipe(gulp.dest(path.production.cssLibs)) // Выгружаем в папку production/css
+        .pipe(gulp.dest(path.build.cssLibs)) // Выгружаем в папку build/css
         .pipe(reload({stream: true})); // Обновляем css на странице при изменении
 });
 
@@ -162,30 +162,30 @@ gulp.task('img', function (){ // оптимизация изображений
         svgPlugins:[{removeViewBox: false}],
         use: [pngquant()]
     })))*/
-        .pipe(gulp.dest('production/'));
+        .pipe(gulp.dest('build/'));
 });
 
 
 
 // следим за изменениями
 gulp.task('watch' , function () {
-    gulp.watch([path.watch.scss], { usePolling: true }, gulp.parallel('scss:production'));
-    gulp.watch([path.watch.resScss], { usePolling: true }, gulp.parallel('resScss:production'));
-    gulp.watch([path.watch.resJs], { usePolling: true }, gulp.parallel('resJs:production'));
-    gulp.watch([path.watch.html], { usePolling: true }, gulp.parallel('html:production'));
-    gulp.watch([path.watch.fonts], { usePolling: true }, gulp.parallel('fonts:production'));
-    gulp.watch([path.watch.js], { usePolling: true }, gulp.parallel('js:production'));
-    gulp.watch([path.watch.jsLibs], { usePolling: true }, gulp.parallel('jsLibs:production'));
-    gulp.watch([path.watch.cssLibs], { usePolling: true }, gulp.parallel('cssLibs:production'));
+    gulp.watch([path.watch.scss], { usePolling: true }, gulp.parallel('scss:build'));
+    gulp.watch([path.watch.resScss], { usePolling: true }, gulp.parallel('resScss:build'));
+    gulp.watch([path.watch.resJs], { usePolling: true }, gulp.parallel('resJs:build'));
+    gulp.watch([path.watch.html], { usePolling: true }, gulp.parallel('html:build'));
+    gulp.watch([path.watch.fonts], { usePolling: true }, gulp.parallel('fonts:build'));
+    gulp.watch([path.watch.js], { usePolling: true }, gulp.parallel('js:build'));
+    gulp.watch([path.watch.jsLibs], { usePolling: true }, gulp.parallel('jsLibs:build'));
+    gulp.watch([path.watch.cssLibs], { usePolling: true }, gulp.parallel('cssLibs:build'));
     gulp.watch('src/img/**/*', { usePolling: true }, gulp.parallel('img'));
 });
 
 
-// чистим папку production
+// чистим папку build
 gulp.task('clean', async function() {
-    return del.sync('production'); // Удаляем папку production перед сборкой
+    return del.sync('build'); // Удаляем папку build перед сборкой
 });
 
 
 // дефолтный таск
-gulp.task('default', gulp.parallel("clean","img","production","webserver","watch"));
+gulp.task('default', gulp.parallel("clean","img","build","webserver","watch"));
