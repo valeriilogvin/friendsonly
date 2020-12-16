@@ -1,7 +1,7 @@
 @font-face {
-  font-family: 'Circe Bold';
+  font-family: 'Gilroy SemiBold';
   font-weight: normal;
-  src: url("../fonts/Circe-Bold.woff") format("woff"); }
+  src: url("../fonts/Gilroy-SemiBold.woff") format("woff"); }
 
 /* Eric Meyer's CSS Reset */
 html, body, div, span, applet, object, iframe,
@@ -45,3 +45,6 @@ table {
   border-spacing: 0; }
 
 /* End of Eric Meyer's CSS Reset */
+body {
+  background: #fff;
+  color: #ffffff; }

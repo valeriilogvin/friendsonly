@@ -1,15 +1,12 @@
-/*
-* variables
-*/
+let sec = 15,
+    time = document.querySelector('.js_time');
 
-/*
-* test data
-* */
+let timerId = setInterval(() => {
+    time.innerText = sec;
+    sec--;
+}, 1000);
 
-/*
-* functions dummy calls
-* */
-
-/*
-* main functions
-* */
+setTimeout(() => {
+    clearInterval(timerId);
+    alert('stop');
+}, 15000);
