@@ -118,7 +118,7 @@ a {
 }
 
 .swipe-bottom {
-  padding: 20px;
+  padding: 18px 20px;
   z-index: 99;
   position: absolute;
   bottom: -100%;
@@ -159,6 +159,7 @@ a {
   .text {
     font-size: 12px;
     line-height: 14px;
+    padding-right: 30px;
   }
 
   .card-block {
