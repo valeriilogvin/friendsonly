@@ -3,6 +3,16 @@
   font-weight: normal;
   src: url("../fonts/Gilroy-SemiBold.woff") format("woff"); }
 
+@font-face {
+  font-family: 'Gilroy Bold';
+  font-weight: normal;
+  src: url("../fonts/Gilroy-Bold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'Gilroy Medium';
+  font-weight: normal;
+  src: url("../fonts/Gilroy-Medium.woff") format("woff"); }
+
 /* Eric Meyer's CSS Reset */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -47,4 +57,72 @@ table {
 /* End of Eric Meyer's CSS Reset */
 body {
   background: #fff;
-  color: #ffffff; }
+  color: #1D1D1F;
+  font-family: 'Gilroy Medium', sans-serif; }
+
+a {
+  display: inline-block; }
+  a.button {
+    margin: 15px 0 10px;
+    text-decoration: none;
+    display: inline-block;
+    background: -webkit-gradient(linear, left top, right top, from(#01C79B), to(#4593EF));
+    background: -o-linear-gradient(left, #01C79B 0%, #4593EF 100%);
+    background: linear-gradient(90deg, #01C79B 0%, #4593EF 100%);
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+    width: 100%;
+    line-height: 40px;
+    color: #FFFFFF;
+    position: relative; }
+    a.button:before {
+      -webkit-transition: opacity .2s ease;
+      -o-transition: opacity .2s ease;
+      transition: opacity .2s ease;
+      border-radius: 10px;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      position: absolute;
+      opacity: 0;
+      z-index: 1;
+      background: -webkit-gradient(linear, left top, right top, from(#4593EF), to(#01C79B));
+      background: -o-linear-gradient(left, #4593EF 0%, #01C79B 100%);
+      background: linear-gradient(90deg, #4593EF 0%, #01C79B 100%); }
+    a.button:hover:before {
+      opacity: 1; }
+    a.button span {
+      position: relative;
+      z-index: 2; }
+  a.back {
+    -webkit-transform-origin: 50%;
+        -ms-transform-origin: 50%;
+            transform-origin: 50%;
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    z-index: 9;
+    top: 25px;
+    left: 25px;
+    width: 15px;
+    height: 15px;
+    position: absolute; }
+    a.back:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #4892F3; }
+    a.back:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: #4892F3; }
