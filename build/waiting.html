@@ -12,20 +12,20 @@
 <body>
 
 <div class="waiting">
-    <img src="img/load.gif" alt="">
-    <div class="preloader">
+
+    <div class="loader">
         <span></span>
         <span></span>
         <span></span>
     </div>
+
     <p class="text">
         Пожалуйста <br/>
         подождите <span class="js_time">15</span> сек, <br />
         скоро вы подружитесь 😊
-
     </p>
 
-    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <svg class="love" xmlns="http://www.w3.org/2000/svg" version="1.1">
         <defs>
             <filter id="love">
                 <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
@@ -36,6 +36,20 @@
     </svg>
 </div>
 
-<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+    let sec = 15,
+        time = document.querySelector('.js_time');
+
+    let timerId = setInterval(() => {
+        time.innerText = sec;
+        sec--;
+    }, 1000);
+
+    setTimeout(() => {
+        clearInterval(timerId);
+        alert('stop');
+    }, 15000);
+</script>
+
 </body>
 </html>
