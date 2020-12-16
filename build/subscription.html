@@ -46,7 +46,7 @@
         </ul>
     </div>
 
-    <div class="gradient-box">
+    <div onclick="openFreeSubscribe()" class="gradient-box">
 
         <img src="img/crown.svg" alt="">
         <div class="text">
@@ -66,18 +66,25 @@
         <a href="#">политикой конфиденциальности</a>
     </div>
 
-
-    <div class="add-card swipe-bottom active js_swipe_bottom">
+    <div class="add-card swipe-bottom js_swipe_bottom js_free_subscribe_block">
         <p class="title">Привязка карты</p>
         <p class="text">Пожалуйста введите номер вашей банковской карты, чтобы подружиться с выбранным пользователем.
             С вашей карты не будет взиматься сейчас плата, поскольку эта подписка бесплатная на 3 дня, далее с вас спишутся деньги.</p>
         <div class="card-block">
-            <input type="text" placeholder="Номер карты">
+            <label for="card" class="card">
+                <input id="card" type="text" placeholder="Номер карты">
+            </label>
         </div>
         <a href="" class="button-gradient disabled"><span>Привязать</span></a>
+        <div class="privacy-policy">
+            Нажимая на кнопку, вы соглашаетесь с
+            <a href="#">условиями использования</a>
+            сервиса и
+            <a href="#">политикой конфиденциальности</a>
+        </div>
     </div>
 
-    <div class="overlay"></div>
+    <div class="overlay js_overlay"></div>
 
 </div>
 

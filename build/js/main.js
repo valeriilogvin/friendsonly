@@ -1,3 +1,6 @@
+let $swipeBottomBlocks = document.querySelectorAll('.js_swipe_bottom');
+let $freeSubscribe = document.querySelector('.js_free_subscribe_block');
+let $overlay = document.querySelector('.js_overlay');
 let myElement = document.querySelector('.js_swipe_bottom');
 
 myElement.addEventListener("touchstart", startTouch, false);
@@ -10,7 +13,7 @@ var initialY = null;
 function startTouch(e) {
     initialX = e.touches[0].clientX;
     initialY = e.touches[0].clientY;
-};
+}
 
 function moveTouch(e) {
     if (initialX === null) {
@@ -43,6 +46,7 @@ function moveTouch(e) {
             console.log("swiped up");
         } else {
             // swiped down
+            myElement.classList.remove('active');
             console.log("swiped down");
         }
     }
@@ -51,4 +55,12 @@ function moveTouch(e) {
     initialY = null;
 
     e.preventDefault();
-};
+}
+
+$overlay.addEventListener('click', ()=> {
+    for( let elem of $swipeBottomBlocks) elem.classList.remove('active');
+});
+
+function openFreeSubscribe(){
+    $freeSubscribe.classList.add('active')
+}

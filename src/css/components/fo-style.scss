@@ -1,4 +1,8 @@
-*{
+$gilroy-semi-bold: 'Gilroy SemiBold', sans-serif;
+$gilroy-medium: 'Gilroy Medium', sans-serif;
+$gilroy-bold: 'Gilroy Bold', sans-serif;
+
+* {
   box-sizing: border-box;
 }
 
@@ -100,6 +104,7 @@ a {
 }
 
 .overlay {
+  transition: all .5s ease;
   opacity: 0;
   visibility: hidden;
   position: absolute;
@@ -116,13 +121,15 @@ a {
   padding: 20px;
   z-index: 99;
   position: absolute;
-  bottom: 0;
+  bottom: -100%;
   left: 0;
+  //transform: translateX(100%);
   width: 100%;
   background: #FFFFFF;
   border-radius: 14px 14px 0 0;
+  transition: all .2s ease;
 
-  &:after{
+  &:after {
     position: absolute;
     top: -6px;
     left: 50%;
@@ -135,9 +142,75 @@ a {
   }
 
   &.active {
+    bottom: 0;
+
     ~ .overlay {
       opacity: 1;
       visibility: visible;
     }
+  }
+
+  .title {
+    font-family: $gilroy-semi-bold;
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+  .text {
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .card-block {
+    margin-top: 16px;
+    border-radius: 19px;
+    padding: 25px 20px;
+    background: transparentize(#D7D7D7, .85);
+    backdrop-filter: blur(50px);
+
+    .card {
+      position: relative;
+      line-height: 50px;
+      height: max-content;
+      display: block;
+
+      &:before {
+        position: absolute;
+        content: url("../img/card.svg");
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      input {
+        background: #FFFFFF;
+        box-shadow: 0 0 5px #CACACA;
+        border-radius: 12px;
+        padding-left: 60px;
+        width: 100%;
+        font-size: 16px;
+        outline: none;
+        border: none;
+        line-height: 50px;
+
+
+        &::placeholder {
+          font-size: 16px;
+          line-height: 19px;
+          color: #828283;
+        }
+      }
+    }
+  }
+}
+
+.privacy-policy{
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+
+  color: #818181;
+  a{
+    color: #818181;
   }
 }
