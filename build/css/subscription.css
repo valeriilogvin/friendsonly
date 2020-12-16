@@ -2,7 +2,8 @@
   padding: 10px 20px;
   font-size: 18px;
   line-height: 22px;
-  overflow: hidden; }
+  overflow: hidden;
+  position: relative; }
   .subscriptions .header {
     text-align: center; }
     .subscriptions .header .nickname {

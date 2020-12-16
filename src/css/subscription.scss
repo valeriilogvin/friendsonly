@@ -7,6 +7,7 @@ $gilroy-bold: 'Gilroy Bold', sans-serif;
   font-size: 18px;
   line-height: 22px;
   overflow: hidden;
+  position: relative;
 
   .header {
     text-align: center;
@@ -142,5 +143,9 @@ $gilroy-bold: 'Gilroy Bold', sans-serif;
     a{
       color: #818181;
     }
+  }
+
+  .add-card{
+
   }
 }
