@@ -23,7 +23,7 @@ var path = {
         scss: 'production/',
         jsLibs: "production/",
         cssLibs: "production/",
-        fonts: "production/",
+        fonts: "production/resources/fonts",
     },
     src: {
         resScss: "src/resources/*.scss",
@@ -33,7 +33,7 @@ var path = {
         scss: "src/**/css/main.scss",
         jsLibs: "src/**/js/libs/**/*.js",
         cssLibs: "src/**/css/libs/**/*.css",
-        fonts: "src/**/fonts/**/*.woff"
+        fonts: "src/fonts/**/*.woff"
     },
     watch: {  //  пути к файлам, за которыми будем следить
         resScss: "src/resources/*.scss",
@@ -43,7 +43,7 @@ var path = {
         scss: "src/**/*.scss",
         jsLibs: "src/**/js/libs/**/*.js",
         cssLibs: "src/**/css/libs/**/*.css",
-        fonts: "src/**/fonts/**/*.woff"
+        fonts: "src/fonts/**/*.woff"
     }
 };
 
