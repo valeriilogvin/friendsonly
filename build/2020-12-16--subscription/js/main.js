@@ -11,46 +11,6 @@ let $swipeBottomBlocks = document.querySelectorAll('.js_swipe_bottom'),
     $subscribeDate = $subscribe.querySelector('.js_input_card_date'),
     $subscribeSvv = $subscribe.querySelector('.js_input_card_cvv');
 
-for(let block of $swipeBottomBlocks) {
-    block.addEventListener("touchstart", startTouch, false);
-    block.addEventListener("touchmove", moveTouch, false);
-}
-
-// Swipe Up / Down / Left / Right
-let initialY = null;
-
-function startTouch(e) {
-    initialY = e.touches[0].clientY;
-}
-
-function moveTouch(e) {
-
-    if (initialY === null) {
-        return;
-    }
-
-    let currentY = e.touches[0].clientY;
-
-    let diffY = initialY - currentY;
-
-    if (diffY > 0) {
-        // swiped up
-        // console.log("swiped up");
-    } else {
-        // swiped down
-        for(let block of $swipeBottomBlocks) {
-            if(block.classList.contains('active')){
-                block.classList.remove('active');
-            }
-        }
-        // console.log("swiped down");
-    }
-
-    initialY = null;
-
-    e.preventDefault();
-}
-
 $overlay.addEventListener('click', ()=> {
     for( let elem of $swipeBottomBlocks) elem.classList.remove('active');
 });
@@ -58,6 +18,7 @@ $overlay.addEventListener('click', ()=> {
 function openFreeSubscribe(){
     inputtingValues($freeSubscribe)
 }
+
 function openSubscribe(){
     inputtingValues($subscribe)
 }
@@ -93,7 +54,7 @@ function inputtingValues($parentSelector) {
         let firstNum = +tempVal.slice(0, 1);
 
         if(inputLength < 14){
-            $inputCardIcon.setAttribute('src', 'img/card.svg')
+            $inputCardIcon.setAttribute('src', 'img/card.svg');
             $inputBtnNext.style = 'opacity: 0; visibility: hidden';
 
         } else{
@@ -173,6 +134,7 @@ function addFreeCard() {
 
     alert("addFreeCard(); card:" + card + " date:" + date + " cvv:" + cvv);
 }
+
 function addCard() {
     let card = $subscribeCard.value,
         date = $subscribeDate.value,
@@ -180,3 +142,53 @@ function addCard() {
 
     alert("addCard(); card:" + card + " date:" + date + " cvv:" + cvv);
 }
+
+// Swipe Down
+for(let block of $swipeBottomBlocks) {
+    block.addEventListener("touchstart", startTouch, false);
+    block.addEventListener("touchmove", moveTouch, false);
+}
+
+let initialY = null;
+
+function startTouch(e) {
+    initialY = e.touches[0].clientY;
+}
+
+function moveTouch(e) {
+
+    if (initialY === null) {
+        return;
+    }
+
+    let currentY = e.touches[0].clientY;
+
+    let diffY = initialY - currentY;
+
+    if (diffY > 0) {
+        // swiped up
+        // console.log("swiped up");
+    } else {
+        // swiped down
+        for(let block of $swipeBottomBlocks) {
+            if(block.classList.contains('active')){
+                block.classList.remove('active');
+            }
+        }
+        // console.log("swiped down");
+    }
+
+    initialY = null;
+
+    e.preventDefault();
+}
+
+// function to fix mobile-browser height
+(function init100vh(){
+    function setHeight() {
+        var vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    setHeight();
+    window.addEventListener('resize', setHeight);
+})();

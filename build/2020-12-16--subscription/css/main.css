@@ -41,13 +41,14 @@ table {
 
 /* End of Eric Meyer's CSS Reset */
 .subscriptions {
-  height: 100vh;
   padding: 10px 20px;
   font-size: 18px;
   line-height: 22px;
   overflow: hidden;
   position: relative;
-  font-family: "Gilroy Medium", sans-serif; }
+  font-family: "Gilroy Medium", sans-serif;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100); }
   .subscriptions .header {
     text-align: center; }
     .subscriptions .header .nickname {
