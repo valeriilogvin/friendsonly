@@ -1,3 +1,7 @@
+## links:
+
+* [subscription](https://valeriilogvin.github.io/friendsonly/build/2020-12-16--subscription/)
+
 ## **[Gulp](https://gulpjs.com/)** 
 
 > Source-files locate in folder "src"
@@ -13,7 +17,3 @@
 > to compile libs.min.css run ```gulp css.min``` 
 >
 > to compile libs.min.js run ```gulp js.min``` 
-
-#### links:
-
-* [subscription](https://valeriilogvin.github.io/friendsonly/build/2020-12-16--subscription/)
