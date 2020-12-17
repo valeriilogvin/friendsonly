@@ -77,11 +77,19 @@
             С вашей карты не будет взиматься сейчас плата, поскольку эта подписка бесплатная на 3 дня, далее с вас
             спишутся деньги.</p>
         <div class="card-block">
-            <label for="card" class="card">
-                <input id="card" type="text" placeholder="Номер карты">
-            </label>
+
+            <div class="card">
+                <div class="card-icon">
+                    <img src="img/card.svg" alt="" class="js_card_icon">
+                </div>
+                <p class="card-info js_card_info"></p>
+                <input class="card-input js_input_card" maxlength="19" type="text" placeholder="Номер карты">
+                <input class="card-date js_input_card_date" maxlength="5" type="text" placeholder="ММ/ГГ">
+                <input class="card-cvv js_input_card_cvv" maxlength="3" type="password" placeholder="CVV">
+                <a class="next-step js_card_next_step" onclick="inputDate()"><img src="img/arrow.svg" alt=""></a>
+            </div>
         </div>
-        <a href="" class="button-gradient disabled"><span>Привязать</span></a>
+        <a href="" class="button-gradient disabled js_btn_add_card" onclick="addFreeCard()"><span>Привязать</span></a>
         <div class="privacy-policy">
             Нажимая на кнопку, вы соглашаетесь с
             <a href="#">условиями использования</a>

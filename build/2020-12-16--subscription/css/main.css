@@ -151,3 +151,132 @@ table {
     color: #818181; }
     .subscriptions .privacy-policy a {
       color: #818181; }
+  .subscriptions .swipe-bottom {
+    padding: 18px 20px;
+    z-index: 99;
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 14px 14px 0 0;
+    -webkit-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease; }
+    .subscriptions .swipe-bottom:after {
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      content: '';
+      -webkit-transform: translateX(-50%) translateY(-100%);
+          -ms-transform: translateX(-50%) translateY(-100%);
+              transform: translateX(-50%) translateY(-100%);
+      width: 33px;
+      height: 4px;
+      background: #FFFFFF;
+      border-radius: 2px; }
+    .subscriptions .swipe-bottom.active {
+      bottom: 0; }
+      .subscriptions .swipe-bottom.active ~ .overlay {
+        opacity: 1;
+        visibility: visible; }
+    .subscriptions .swipe-bottom .title {
+      font-family: "Gilroy SemiBold", sans-serif;
+      font-size: 18px;
+      line-height: 21px; }
+    .subscriptions .swipe-bottom .text {
+      font-size: 12px;
+      line-height: 14px;
+      padding-right: 30px; }
+    .subscriptions .swipe-bottom .card-block {
+      margin-top: 16px;
+      border-radius: 19px;
+      padding: 25px 20px;
+      background: rgba(215, 215, 215, 0.15);
+      -webkit-backdrop-filter: blur(50px);
+              backdrop-filter: blur(50px); }
+      .subscriptions .swipe-bottom .card-block .card {
+        background: #FFFFFF;
+        position: relative;
+        line-height: 50px;
+        height: 50px;
+        display: block;
+        -webkit-box-shadow: 0 0 5px #CACACA;
+                box-shadow: 0 0 5px #CACACA;
+        border-radius: 12px; }
+        .subscriptions .swipe-bottom .card-block .card .card-icon {
+          position: absolute;
+          left: 0;
+          height: 100%;
+          width: 60px; }
+          .subscriptions .swipe-bottom .card-block .card .card-icon img {
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translateY(-50%) translateX(-50%);
+                -ms-transform: translateY(-50%) translateX(-50%);
+                    transform: translateY(-50%) translateX(-50%); }
+        .subscriptions .swipe-bottom .card-block .card .card-info {
+          display: none;
+          padding-left: 60px;
+          font-size: 16px;
+          line-height: 50px;
+          font-weight: 500; }
+        .subscriptions .swipe-bottom .card-block .card input {
+          padding: 0;
+          border-radius: 12px;
+          font-size: 16px;
+          outline: none;
+          border: none;
+          line-height: 50px; }
+          .subscriptions .swipe-bottom .card-block .card input::-webkit-input-placeholder {
+            font-size: 16px;
+            line-height: 19px;
+            color: #828283; }
+          .subscriptions .swipe-bottom .card-block .card input::-moz-placeholder {
+            font-size: 16px;
+            line-height: 19px;
+            color: #828283; }
+          .subscriptions .swipe-bottom .card-block .card input:-ms-input-placeholder {
+            font-size: 16px;
+            line-height: 19px;
+            color: #828283; }
+          .subscriptions .swipe-bottom .card-block .card input::-ms-input-placeholder {
+            font-size: 16px;
+            line-height: 19px;
+            color: #828283; }
+          .subscriptions .swipe-bottom .card-block .card input::placeholder {
+            font-size: 16px;
+            line-height: 19px;
+            color: #828283; }
+          .subscriptions .swipe-bottom .card-block .card input.card-input {
+            padding-left: 60px;
+            width: 100%; }
+          .subscriptions .swipe-bottom .card-block .card input.card-date {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            right: 90px;
+            width: 50px; }
+          .subscriptions .swipe-bottom .card-block .card input.card-cvv {
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            right: 15px;
+            width: 32px; }
+      .subscriptions .swipe-bottom .card-block .next-step {
+        opacity: 0;
+        visibility: hidden;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+                transform: translateY(-50%); }
