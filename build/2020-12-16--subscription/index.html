@@ -62,7 +62,7 @@
 
     </div>
 
-    <a href="#" class="button-gradient"><span>Подружиться</span></a>
+    <a onclick="openSubscribe()" class="button-gradient"><span>Подружиться</span></a>
 
     <div class="privacy-policy">
         Нажимая на кнопку, вы соглашаетесь с
@@ -82,14 +82,39 @@
                 <div class="card-icon">
                     <img src="img/card.svg" alt="" class="js_card_icon">
                 </div>
-                <p class="card-info js_card_info"></p>
+                <a class="card-info js_card_info"></a>
                 <input class="card-input js_input_card" maxlength="19" type="text" placeholder="Номер карты">
                 <input class="card-date js_input_card_date" maxlength="5" type="text" placeholder="ММ/ГГ">
                 <input class="card-cvv js_input_card_cvv" maxlength="3" type="password" placeholder="CVV">
-                <a class="next-step js_card_next_step" onclick="inputDate()"><img src="img/arrow.svg" alt=""></a>
+                <a class="next-step js_card_next_step"><img src="img/arrow.svg" alt=""></a>
             </div>
         </div>
-        <a href="" class="button-gradient disabled js_btn_add_card" onclick="addFreeCard()"><span>Привязать</span></a>
+        <a onclick="addFreeCard()"  class="button-gradient disabled js_btn_add_card"><span>Привязать</span></a>
+        <div class="privacy-policy">
+            Нажимая на кнопку, вы соглашаетесь с
+            <a href="#">условиями использования</a>
+            сервиса и
+            <a href="#">политикой конфиденциальности</a>
+        </div>
+    </div>
+
+    <div class="add-card swipe-bottom js_swipe_bottom js_subscribe_block">
+        <p class="title">Привязка карты</p>
+        <p class="text">Пожалуйста введите номер вашей банковской карты, чтобы подружиться с выбранным пользователем</p>
+        <div class="card-block">
+
+            <div class="card">
+                <div class="card-icon">
+                    <img src="img/card.svg" alt="" class="js_card_icon">
+                </div>
+                <a class="card-info js_card_info"></a>
+                <input class="card-input js_input_card" maxlength="19" type="text" placeholder="Номер карты">
+                <input class="card-date js_input_card_date" maxlength="5" type="text" placeholder="ММ/ГГ">
+                <input class="card-cvv js_input_card_cvv" maxlength="3" type="password" placeholder="CVV">
+                <a class="next-step js_card_next_step"><img src="img/arrow.svg" alt=""></a>
+            </div>
+        </div>
+        <a onclick="addCard()" class="button-gradient disabled js_btn_add_card"><span>Привязать</span></a>
         <div class="privacy-policy">
             Нажимая на кнопку, вы соглашаетесь с
             <a href="#">условиями использования</a>

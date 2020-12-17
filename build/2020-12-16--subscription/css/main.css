@@ -41,6 +41,7 @@ table {
 
 /* End of Eric Meyer's CSS Reset */
 .subscriptions {
+  height: 100vh;
   padding: 10px 20px;
   font-size: 18px;
   line-height: 22px;
@@ -229,6 +230,7 @@ table {
           font-size: 16px;
           outline: none;
           border: none;
+          height: 50px;
           line-height: 50px; }
           .subscriptions .swipe-bottom .card-block .card input::-webkit-input-placeholder {
             font-size: 16px;

@@ -177,7 +177,7 @@ gulp.task('watch' , function () {
     gulp.watch([path.watch.js], { usePolling: true }, gulp.parallel('js:build'));
     gulp.watch([path.watch.jsLibs], { usePolling: true }, gulp.parallel('jsLibs:build'));
     gulp.watch([path.watch.cssLibs], { usePolling: true }, gulp.parallel('cssLibs:build'));
-    gulp.watch('src/img/**/*', { usePolling: true }, gulp.parallel('img'));
+    gulp.watch('src/**/img/**/*', { usePolling: true }, gulp.parallel('img'));
 });
 
 
