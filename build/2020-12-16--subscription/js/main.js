@@ -70,6 +70,14 @@ function inputtingValues($parentSelector) {
                 $inputCardIcon.setAttribute('src', 'img/visa.svg')
             }
         }
+        if(inputLength === 19){
+            $inputBtnNext.style = 'opacity: 0; visibility: hidden';
+            $inputCard.style.display = 'none';
+            $inputInfo.style.display = 'block';
+            $inputCardDate.style = 'opacity: 1; visibility: visible';
+            $inputCardCvv.style = 'opacity: 1; visibility: visible';
+            $inputCardDate.focus();
+        }
     }
 
     $inputCardDate.oninput = function () {
