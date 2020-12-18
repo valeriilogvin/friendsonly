@@ -9,6 +9,8 @@ $gilroy-bold: 'Gilroy Bold', sans-serif;
   overflow: hidden;
   position: relative;
   font-family: $gilroy-medium;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 
   .header {
     text-align: center;
@@ -237,6 +239,7 @@ $gilroy-bold: 'Gilroy Bold', sans-serif;
           font-size: 16px;
           outline: none;
           border: none;
+          height: 50px;
           line-height: 50px;
 
           &::placeholder {

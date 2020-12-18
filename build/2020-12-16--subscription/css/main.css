@@ -46,7 +46,9 @@ table {
   line-height: 22px;
   overflow: hidden;
   position: relative;
-  font-family: "Gilroy Medium", sans-serif; }
+  font-family: "Gilroy Medium", sans-serif;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100); }
   .subscriptions .header {
     text-align: center; }
     .subscriptions .header .nickname {
@@ -229,6 +231,7 @@ table {
           font-size: 16px;
           outline: none;
           border: none;
+          height: 50px;
           line-height: 50px; }
           .subscriptions .swipe-bottom .card-block .card input::-webkit-input-placeholder {
             font-size: 16px;

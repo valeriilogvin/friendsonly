@@ -1,163 +1,202 @@
-let $swipeBottomBlocks = document.querySelectorAll('.js_swipe_bottom');
-let $overlay = document.querySelector('.js_overlay');
-let myElement = document.querySelector('.js_swipe_bottom');
+let $swipeBottomBlocks = document.querySelectorAll('.js_swipe_bottom'),
+    $overlay = document.querySelector('.js_overlay'),
 
-let $freeSubscribe = document.querySelector('.js_free_subscribe_block');
-let $freeInputCard = $freeSubscribe.querySelector('.js_input_card');
-let $freeInputCardIcon = $freeSubscribe.querySelector('.js_card_icon');
-let $freeInputCardDate = $freeSubscribe.querySelector('.js_input_card_date');
-let $freeInputCardCvv = $freeSubscribe.querySelector('.js_input_card_cvv');
-let $freeInputBtnNext = $freeSubscribe.querySelector('.js_card_next_step');
-let $freeInputInfo = $freeSubscribe.querySelector('.js_card_info');
-let $freeBtnAddCard = $freeSubscribe.querySelector('.js_btn_add_card');
+    $freeSubscribe = document.querySelector('.js_free_subscribe_block'),
+    $freeSubscribeCard = $freeSubscribe.querySelector('.js_input_card'),
+    $freeSubscribeDate = $freeSubscribe.querySelector('.js_input_card_date'),
+    $freeSubscribeSvv = $freeSubscribe.querySelector('.js_input_card_cvv'),
 
-let $subscribe = document.querySelector('.js_free_subscribe_block');
-let $inputCard = $subscribe.querySelector('.js_input_card');
-let $inputCardIcon = $subscribe.querySelector('.js_card_icon');
-let $inputCardDate = $subscribe.querySelector('.js_input_card_date');
-let $inputCardCvv = $subscribe.querySelector('.js_input_card_cvv');
-let $inputBtnNext = $subscribe.querySelector('.js_card_next_step');
-let $inputInfo = $subscribe.querySelector('.js_card_info');
-let $btnAddCard = $subscribe.querySelector('.js_btn_add_card');
-
-
-myElement.addEventListener("touchstart", startTouch, false);
-myElement.addEventListener("touchmove", moveTouch, false);
-
-// Swipe Up / Down / Left / Right
-var initialX = null;
-var initialY = null;
-
-function startTouch(e) {
-    initialX = e.touches[0].clientX;
-    initialY = e.touches[0].clientY;
-}
-
-function moveTouch(e) {
-    if (initialX === null) {
-        return;
-    }
-
-    if (initialY === null) {
-        return;
-    }
-
-    var currentX = e.touches[0].clientX;
-    var currentY = e.touches[0].clientY;
-
-    var diffX = initialX - currentX;
-    var diffY = initialY - currentY;
-
-    if (Math.abs(diffX) > Math.abs(diffY)) {
-        // sliding horizontally
-        if (diffX > 0) {
-            // swiped left
-            console.log("swiped left");
-        } else {
-            // swiped right
-            console.log("swiped right");
-        }
-    } else {
-        // sliding vertically
-        if (diffY > 0) {
-            // swiped up
-            console.log("swiped up");
-        } else {
-            // swiped down
-            myElement.classList.remove('active');
-            console.log("swiped down");
-        }
-    }
-
-    initialX = null;
-    initialY = null;
-
-    e.preventDefault();
-}
+    $subscribe = document.querySelector('.js_subscribe_block'),
+    $subscribeCard = $subscribe.querySelector('.js_input_card'),
+    $subscribeDate = $subscribe.querySelector('.js_input_card_date'),
+    $subscribeSvv = $subscribe.querySelector('.js_input_card_cvv');
 
 $overlay.addEventListener('click', ()=> {
     for( let elem of $swipeBottomBlocks) elem.classList.remove('active');
 });
 
 function openFreeSubscribe(){
-    $freeSubscribe.classList.add('active')
+    inputtingValues($freeSubscribe)
 }
 
-$freeInputCard.oninput = function () {
-    validatorCard($freeInputCard);
-};
-
-function validatorCard($input) {
-    let cardNumber;
-    let tempVal = $input.value.replace(/\D/g, '');
-
-    cardNumber = (tempVal.slice(0,4).replace(/(.{4})/g, '$1 ') +
-        tempVal.slice(4,8).replace(/(.{4})/g, '$1 ') +
-        tempVal.slice(8,12).replace(/(.{4})/g, '$1 ') +
-        tempVal.slice(12,16)).trim();
-
-    $input.value = $input.value = cardNumber;
-
-    let firstNum = +tempVal.slice(0, 1);
-
-    if(firstNum === 2){
-        $freeInputCardIcon.setAttribute('src', 'img/mir.svg')
-    }else if(firstNum === 5){
-        $freeInputCardIcon.setAttribute('src', 'img/mc.svg')
-    }else if(firstNum === 4){
-        $freeInputCardIcon.setAttribute('src', 'img/visa.svg')
-    }else {
-        $freeInputCardIcon.setAttribute('src', 'img/card.svg')
-
-    }
-
-    if($input.value.length === 19){
-        $freeInputBtnNext.style = 'opacity: 1; visibility: visible';
-        let lastNumbers = $input.value.slice(15,19);
-        $freeInputInfo.innerText = "***" + lastNumbers;
-        console.log(lastNumbers);
-    }
+function openSubscribe(){
+    inputtingValues($subscribe)
 }
 
-function inputDate(){
-    $freeInputBtnNext.style = 'opacity: 0; visibility: hidden';
-    $freeInputCard.style.display = 'none';
-    $freeInputInfo.style.display = 'block';
-    $freeInputCardDate.style = 'opacity: 1; visibility: visible';
-    $freeInputCardCvv.style = 'opacity: 1; visibility: visible';
-    $freeInputCardDate.focus();
-}
+function inputtingValues($parentSelector) {
 
-$freeInputCardDate.oninput = function () {
-    validatorCardDate($freeInputCardDate);
-};
+    $parentSelector.classList.add('active');
 
-function validatorCardDate($input) {
-    let cardNumber;
-    let tempVal = $input.value.replace(/\D/g, '');
+    let $inputCard = $parentSelector.querySelector('.js_input_card');
+    let $inputCardIcon = $parentSelector.querySelector('.js_card_icon');
+    let $inputCardDate = $parentSelector.querySelector('.js_input_card_date');
+    let $inputCardCvv = $parentSelector.querySelector('.js_input_card_cvv');
+    let $inputBtnNext = $parentSelector.querySelector('.js_card_next_step');
+    let $inputInfo = $parentSelector.querySelector('.js_card_info');
+    let $btnAddCard = $parentSelector.querySelector('.js_btn_add_card');
 
-    cardNumber = (tempVal.slice(0,2).replace(/(.{2})/g, '$1/') +
-        tempVal.slice(2,4)).trim();
+    $inputCard.oninput = function () {
+        validatorCard($inputCard);
+    };
 
-    $input.value = $input.value = cardNumber;
+    function validatorCard($input) {
+        let cardNumber;
+        let tempVal = $input.value.replace(/\D/g, ''),
+            inputLength = $input.value.length;
 
-    if($input.value.length === 5){
-        $freeInputCardCvv.focus();
+        cardNumber = (tempVal.slice(0,4).replace(/(.{4})/g, '$1 ') +
+            tempVal.slice(4,8).replace(/(.{4})/g, '$1 ') +
+            tempVal.slice(8,12).replace(/(.{4})/g, '$1 ') +
+            tempVal.slice(12,16)).trim();
+
+        $input.value = cardNumber;
+
+        let firstNum = +tempVal.slice(0, 1);
+
+        if(inputLength < 14){
+            $inputCardIcon.setAttribute('src', 'img/card.svg');
+            $inputBtnNext.style = 'opacity: 0; visibility: hidden';
+
+        } else{
+            $inputBtnNext.style = 'opacity: 1; visibility: visible';
+            let lastNumbers = $input.value.slice(-4);
+            $inputInfo.innerText = "***" + lastNumbers;
+
+            if(firstNum === 2){
+                $inputCardIcon.setAttribute('src', 'img/mir.svg')
+            }else if(firstNum === 5){
+                $inputCardIcon.setAttribute('src', 'img/mc.svg')
+            }else if(firstNum === 4){
+                $inputCardIcon.setAttribute('src', 'img/visa.svg')
+            }
+        }
+        if(inputLength === 19){
+            $inputBtnNext.style = 'opacity: 0; visibility: hidden';
+            $inputCard.style.display = 'none';
+            $inputInfo.style.display = 'block';
+            $inputCardDate.style = 'opacity: 1; visibility: visible';
+            $inputCardCvv.style = 'opacity: 1; visibility: visible';
+            $inputCardDate.focus();
+        }
     }
-}
 
-$freeInputCardCvv.oninput = function () {
-    let dateLength = $freeInputCardDate.value.length,
-        cvvLength = $freeInputCardCvv.value.length;
-    if(dateLength === 5 && cvvLength === 3){
-        $freeBtnAddCard.classList.remove('disabled')
+    $inputCardDate.oninput = function () {
+        validatorCardDate($inputCardDate);
+        let dateLength = $inputCardDate.value.length,
+            cvvLength = $inputCardCvv.value.length;
+
+        if(dateLength === 5 && cvvLength === 3){
+            $btnAddCard.classList.remove('disabled')
+        }
+    };
+
+    $inputCardCvv.oninput = function () {
+        let dateLength = $inputCardDate.value.length,
+            cvvLength = $inputCardCvv.value.length;
+        if(dateLength >= 5 && cvvLength >= 3){
+            $btnAddCard.classList.remove('disabled')
+        } else {
+            $btnAddCard.classList.add('disabled')
+        }
+
+        $inputCardCvv.value = $inputCardCvv.value.replace(/\D/g, '');
+    };
+
+    function validatorCardDate($input) {
+        let cardNumber;
+        let tempVal = $input.value.replace(/\D/g, '');
+
+        cardNumber = (tempVal.slice(0,2).replace(/(.{2})/g, '$1/') +
+            tempVal.slice(2,4)).trim();
+
+        $input.value = cardNumber;
+
+        if($input.value.length === 5){
+            $inputCardCvv.focus();
+        }
     }
-};
+
+    $inputInfo.addEventListener('click', () => {
+        $inputBtnNext.style = 'opacity: 1; visibility: visible';
+        $inputCard.style.display = 'block';
+        $inputInfo.style.display = 'none';
+        $inputCardDate.style = 'opacity: 0; visibility: hidden';
+        $inputCardCvv.style = 'opacity: 0; visibility: hidden';
+        $inputCard.focus();
+    });
+
+    $inputBtnNext.addEventListener('click', () => {
+        $inputBtnNext.style = 'opacity: 0; visibility: hidden';
+        $inputCard.style.display = 'none';
+        $inputInfo.style.display = 'block';
+        $inputCardDate.style = 'opacity: 1; visibility: visible';
+        $inputCardCvv.style = 'opacity: 1; visibility: visible';
+        $inputCardDate.focus();
+    });
+}
 
 function addFreeCard() {
-    let card = $freeInputCard.value,
-        date = $freeInputCardDate.value,
-        cvv = $freeInputCardCvv.value;
+    let card = $freeSubscribeCard.value,
+        date = $freeSubscribeDate.value,
+        cvv = $freeSubscribeSvv.value;
 
-    alert("card:" + card + " date:" + date + " cvv:" + cvv);
+    alert("addFreeCard(); card:" + card + " date:" + date + " cvv:" + cvv);
 }
+
+function addCard() {
+    let card = $subscribeCard.value,
+        date = $subscribeDate.value,
+        cvv = $subscribeSvv.value;
+
+    alert("addCard(); card:" + card + " date:" + date + " cvv:" + cvv);
+}
+
+// Swipe Down
+for(let block of $swipeBottomBlocks) {
+    block.addEventListener("touchstart", startTouch, false);
+    block.addEventListener("touchmove", moveTouch, false);
+}
+
+let initialY = null;
+
+function startTouch(e) {
+    initialY = e.touches[0].clientY;
+}
+
+function moveTouch(e) {
+
+    if (initialY === null) {
+        return;
+    }
+
+    let currentY = e.touches[0].clientY;
+
+    let diffY = initialY - currentY;
+
+    if (diffY > 0) {
+        // swiped up
+        // console.log("swiped up");
+    } else {
+        // swiped down
+        for(let block of $swipeBottomBlocks) {
+            if(block.classList.contains('active')){
+                block.classList.remove('active');
+            }
+        }
+        // console.log("swiped down");
+    }
+
+    initialY = null;
+
+    e.preventDefault();
+}
+
+// function to fix mobile-browser height
+(function init100vh(){
+    function setHeight() {
+        var vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    setHeight();
+    window.addEventListener('resize', setHeight);
+})();
