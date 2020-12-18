@@ -1,15 +1,24 @@
 let $swipeBottomBlocks = document.querySelectorAll('.js_swipe_bottom');
-let $freeSubscribe = document.querySelector('.js_free_subscribe_block');
 let $overlay = document.querySelector('.js_overlay');
 let myElement = document.querySelector('.js_swipe_bottom');
 
+let $freeSubscribe = document.querySelector('.js_free_subscribe_block');
 let $freeInputCard = $freeSubscribe.querySelector('.js_input_card');
 let $freeInputCardIcon = $freeSubscribe.querySelector('.js_card_icon');
 let $freeInputCardDate = $freeSubscribe.querySelector('.js_input_card_date');
 let $freeInputCardCvv = $freeSubscribe.querySelector('.js_input_card_cvv');
 let $freeInputBtnNext = $freeSubscribe.querySelector('.js_card_next_step');
 let $freeInputInfo = $freeSubscribe.querySelector('.js_card_info');
-let $btnAddCard = $freeSubscribe.querySelector('.js_btn_add_card');
+let $freeBtnAddCard = $freeSubscribe.querySelector('.js_btn_add_card');
+
+let $subscribe = document.querySelector('.js_free_subscribe_block');
+let $inputCard = $subscribe.querySelector('.js_input_card');
+let $inputCardIcon = $subscribe.querySelector('.js_card_icon');
+let $inputCardDate = $subscribe.querySelector('.js_input_card_date');
+let $inputCardCvv = $subscribe.querySelector('.js_input_card_cvv');
+let $inputBtnNext = $subscribe.querySelector('.js_card_next_step');
+let $inputInfo = $subscribe.querySelector('.js_card_info');
+let $btnAddCard = $subscribe.querySelector('.js_btn_add_card');
 
 
 myElement.addEventListener("touchstart", startTouch, false);
@@ -78,8 +87,6 @@ $freeInputCard.oninput = function () {
     validatorCard($freeInputCard);
 };
 
-
-
 function validatorCard($input) {
     let cardNumber;
     let tempVal = $input.value.replace(/\D/g, '');
@@ -143,7 +150,7 @@ $freeInputCardCvv.oninput = function () {
     let dateLength = $freeInputCardDate.value.length,
         cvvLength = $freeInputCardCvv.value.length;
     if(dateLength === 5 && cvvLength === 3){
-        $btnAddCard.classList.remove('disabled')
+        $freeBtnAddCard.classList.remove('disabled')
     }
 };
 
@@ -154,37 +161,3 @@ function addFreeCard() {
 
     alert("card:" + card + " date:" + date + " cvv:" + cvv);
 }
-
-// function validatorName() {
-//     let value = $inputFirstName.value;
-//
-//     let rus = value.match(/[А-Яа-яёЁЇїІіЄєҐґ]/g),
-//         iChars = value.match(/[^\d\sA-Z]/gi),
-//         numbers = value.match(/[0-9]/g),
-//         space = value.match(/\s/);
-//
-//     if (value.length === 0) {
-//         validFirstName = false;
-//     }
-//
-//     for (let i = 0; i < value.length; i++) {
-//
-//         $inputFirstName.value = value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-//
-//         if (iChars || rus || space) {
-//             showError('Имя может содержать только латинские символы.');
-//             validFirstName = false;
-//         } else if (numbers) {
-//             showError('Имя не может содержать цифры.');
-//             validFirstName = false;
-//         } else {
-//             validFirstName = true;
-//         }
-//     }
-//     if (!validFirstName) {
-//         $inputFirstName.classList.add('error');
-//     } else {
-//         showError('');
-//         $inputFirstName.classList.remove('error');
-//     }
-// }
