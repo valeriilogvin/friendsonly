@@ -48,23 +48,6 @@ a {
       }
     }
 
-    &.disabled {
-      pointer-events: none;
-
-      &:after {
-        transition: opacity .2s ease;
-        border-radius: 10px;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        content: '';
-        position: absolute;
-        z-index: 1;
-        background: rgba(255, 255, 255, 0.7);
-      }
-    }
-
     span {
       position: relative;
       z-index: 2;

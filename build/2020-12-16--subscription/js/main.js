@@ -41,10 +41,12 @@ function inputtingValues($parentSelector) {
             tempVal = $input.value.replace(/\D/g, ''),
             inputLength = $input.value.length;
 
-        cardNumber = (tempVal.slice(0,4).replace(/(.{4})/g, '$1 ') +
-            tempVal.slice(4,8).replace(/(.{4})/g, '$1 ') +
-            tempVal.slice(8,12).replace(/(.{4})/g, '$1 ') +
-            tempVal.slice(12,16)).trim();
+        // cardNumber = (tempVal.slice(0,4).replace(/(.{4})/g, '$1 ') +
+        //     tempVal.slice(4,8).replace(/(.{4})/g, '$1 ') +
+        //     tempVal.slice(8,12).replace(/(.{4})/g, '$1 ') +
+        //     tempVal.slice(12,16)).trim();
+
+        cardNumber = tempVal.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
 
         $input.value = cardNumber;
 
@@ -55,7 +57,7 @@ function inputtingValues($parentSelector) {
 
         } else{
             $inputBtnNext.style = 'opacity: 1; visibility: visible';
-            let lastNumbers = $input.value.slice(-4);
+            let lastNumbers = $input.value.replace(/\D/g, '').slice(-4);
             $inputInfo.innerText = "***" + lastNumbers;
         }
 

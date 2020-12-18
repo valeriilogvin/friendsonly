@@ -283,5 +283,36 @@ $gilroy-bold: 'Gilroy Bold', sans-serif;
         transform: translateY(-50%);
       }
     }
+
+    .button{
+      background: linear-gradient(90deg, #01C79B 0%, #4593EF 0.01%);
+      border-radius: 10px;
+      font-weight: 500;
+      text-align: center;
+      margin: 18px 0 7px;
+      width: 100%;
+      position: relative;
+      font-size: 15px;
+      line-height: 40px;
+      color: #FFFFFF;
+
+      &.disabled {
+        pointer-events: none;
+
+
+        &:after {
+          transition: opacity .2s ease;
+          border-radius: 10px;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          content: '';
+          position: absolute;
+          z-index: 1;
+          background: rgba(255, 255, 255, 0.7);
+        }
+      }
+    }
   }
 }
