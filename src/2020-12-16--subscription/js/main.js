@@ -40,14 +40,16 @@ function inputtingValues($parentSelector) {
     };
 
     function validatorCard($input) {
-        let cardNumber;
-        let tempVal = $input.value.replace(/\D/g, ''),
+        let cardNumber,
+            tempVal = $input.value,
             inputLength = $input.value.length;
 
-        cardNumber = (tempVal.slice(0,4).replace(/(.{4})/g, '$1 ') +
-            tempVal.slice(4,8).replace(/(.{4})/g, '$1 ') +
-            tempVal.slice(8,12).replace(/(.{4})/g, '$1 ') +
-            tempVal.slice(12,16)).trim();
+        // cardNumber = (tempVal.slice(0,4).replace(/(.{4})/g, '$1 ') +
+        //     tempVal.slice(4,8).replace(/(.{4})/g, '$1 ') +
+        //     tempVal.slice(8,12).replace(/(.{4})/g, '$1 ') +
+        //     tempVal.slice(12,16)).trim();
+
+        cardNumber = tempVal.replace(/[^\dA-Z]/g, '').replace(/(.{4})/g, '$1 ').trim();
 
         $input.value = cardNumber;
 

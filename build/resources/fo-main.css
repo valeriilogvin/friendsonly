@@ -41,21 +41,6 @@ a {
       background: linear-gradient(90deg, #4593EF 0%, #01C79B 100%); }
     a.button-gradient:hover:before {
       opacity: 1; }
-    a.button-gradient.disabled {
-      pointer-events: none; }
-      a.button-gradient.disabled:after {
-        -webkit-transition: opacity .2s ease;
-        -o-transition: opacity .2s ease;
-        transition: opacity .2s ease;
-        border-radius: 10px;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        content: '';
-        position: absolute;
-        z-index: 1;
-        background: rgba(255, 255, 255, 0.7); }
     a.button-gradient span {
       position: relative;
       z-index: 2; }
