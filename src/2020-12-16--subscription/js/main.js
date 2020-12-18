@@ -11,9 +11,6 @@ let $swipeBottomBlocks = document.querySelectorAll('.js_swipe_bottom'),
     $subscribeDate = $subscribe.querySelector('.js_input_card_date'),
     $subscribeSvv = $subscribe.querySelector('.js_input_card_cvv');
 
-$overlay.addEventListener('click', ()=> {
-    for( let elem of $swipeBottomBlocks) elem.classList.remove('active');
-});
 
 function openFreeSubscribe(){
     inputtingValues($freeSubscribe)
@@ -40,8 +37,8 @@ function inputtingValues($parentSelector) {
     };
 
     function validatorCard($input) {
-        let cardNumber;
-        let tempVal = $input.value.replace(/\D/g, ''),
+        let cardNumber,
+            tempVal = $input.value.replace(/\D/g, ''),
             inputLength = $input.value.length;
 
         cardNumber = (tempVal.slice(0,4).replace(/(.{4})/g, '$1 ') +
@@ -54,22 +51,24 @@ function inputtingValues($parentSelector) {
         let firstNum = +tempVal.slice(0, 1);
 
         if(inputLength < 14){
-            $inputCardIcon.setAttribute('src', 'img/card.svg');
             $inputBtnNext.style = 'opacity: 0; visibility: hidden';
 
         } else{
             $inputBtnNext.style = 'opacity: 1; visibility: visible';
             let lastNumbers = $input.value.slice(-4);
             $inputInfo.innerText = "***" + lastNumbers;
-
-            if(firstNum === 2){
-                $inputCardIcon.setAttribute('src', 'img/mir.svg')
-            }else if(firstNum === 5){
-                $inputCardIcon.setAttribute('src', 'img/mc.svg')
-            }else if(firstNum === 4){
-                $inputCardIcon.setAttribute('src', 'img/visa.svg')
-            }
         }
+
+        if(firstNum === 2){
+            $inputCardIcon.setAttribute('src', 'img/mir.svg')
+        }else if(firstNum === 5){
+            $inputCardIcon.setAttribute('src', 'img/mc.svg')
+        }else if(firstNum === 4){
+            $inputCardIcon.setAttribute('src', 'img/visa.svg')
+        }else {
+            $inputCardIcon.setAttribute('src', 'img/card.svg');
+        }
+
         if(inputLength === 19){
             $inputBtnNext.style = 'opacity: 0; visibility: hidden';
             $inputCard.style.display = 'none';
@@ -93,6 +92,7 @@ function inputtingValues($parentSelector) {
     $inputCardCvv.oninput = function () {
         let dateLength = $inputCardDate.value.length,
             cvvLength = $inputCardCvv.value.length;
+
         if(dateLength >= 5 && cvvLength >= 3){
             $btnAddCard.classList.remove('disabled')
         } else {
@@ -103,8 +103,8 @@ function inputtingValues($parentSelector) {
     };
 
     function validatorCardDate($input) {
-        let cardNumber;
-        let tempVal = $input.value.replace(/\D/g, '');
+        let cardNumber,
+            tempVal = $input.value.replace(/\D/g, '');
 
         cardNumber = (tempVal.slice(0,2).replace(/(.{2})/g, '$1/') +
             tempVal.slice(2,4)).trim();
@@ -151,7 +151,12 @@ function addCard() {
     alert("addCard(); card:" + card + " date:" + date + " cvv:" + cvv);
 }
 
-// Swipe Down
+// close popup on click on overlay
+$overlay.addEventListener('click', ()=> {
+    for( let elem of $swipeBottomBlocks) elem.classList.remove('active');
+});
+
+// Swipe down on popups
 for(let block of $swipeBottomBlocks) {
     block.addEventListener("touchstart", startTouch, false);
     block.addEventListener("touchmove", moveTouch, false);
