@@ -14,6 +14,7 @@ body {
 
 a {
   display: inline-block;
+  text-decoration: none;
 
   &.button-gradient {
     margin: 15px 0 10px;
@@ -83,6 +84,15 @@ a {
       height: 100%;
       background: #4892F3;
     }
+  }
+
+  &.close{
+    font-family: $gilroy-medium;
+    font-size: 15.6px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+
+    color: #4892F3;
   }
 }
 

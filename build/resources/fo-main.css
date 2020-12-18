@@ -8,7 +8,8 @@ body {
   font-family: 'Gilroy Medium', sans-serif; }
 
 a {
-  display: inline-block; }
+  display: inline-block;
+  text-decoration: none; }
   a.button-gradient {
     margin: 15px 0 10px;
     text-decoration: none;
@@ -73,6 +74,12 @@ a {
       width: 3px;
       height: 100%;
       background: #4892F3; }
+  a.close {
+    font-family: "Gilroy Medium", sans-serif;
+    font-size: 15.6px;
+    line-height: 18px;
+    letter-spacing: 0.02em;
+    color: #4892F3; }
 
 .overlay {
   -webkit-transition: all .5s ease;
